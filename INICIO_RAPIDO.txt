@@ -1,0 +1,83 @@
+=========================================
+🚀 INÍCIO RÁPIDO - Mini ChatGPT Demo
+=========================================
+
+🎓 VERSÃO PARA APRESENTAÇÃO ACADÊMICA:
+   
+   Arquivo: chat_apresentacao.html
+   
+   1. Abra chat_apresentacao.html no navegador
+   2. Clique nas perguntas pré-programadas
+   3. Veja o processamento acontecer em tempo real
+   
+   ✅ Não precisa de API Key!
+   ✅ Não precisa de internet!
+   ✅ Mostra os bastidores do processamento!
+   ✅ Perfeito para demonstrar como LLMs funcionam!
+   
+   📖 Veja GUIA_APRESENTACAO.txt para roteiro!
+
+---
+
+📌 VERSÃO HTML COMPLETA (com API real):
+   
+   1. Abra chat.html no navegador
+   2. Cole sua OpenAI API Key
+   3. Digite uma pergunta
+   4. Clique em "Processar"
+   
+   ⚠️ Precisa de API Key OpenAI
+
+---
+
+📌 VERSÃO PYTHON:
+
+   1. pip install -r requirements.txt
+   2. streamlit run chat_demo.py
+   
+   (ou chat_demo_pro.py para versão avançada)
+
+---
+
+📌 ONDE CONSEGUIR API KEY:
+
+   1. Acesse: https://platform.openai.com/api-keys
+   2. Faça login
+   3. Crie uma nova chave
+
+---
+
+📌 ARQUIVOS DISPONÍVEIS:
+
+   PARA APRESENTAÇÃO:
+   • chat_apresentacao.html ⭐ RECOMENDADO PARA AULA!
+     → Mostra bastidores do processamento
+     → Não precisa de API Key
+     → 5 perguntas pré-programadas
+   
+   HTML COM API REAL:
+   • chat.html - Versão completa com histórico
+   • chat_simples.html - Versão minimalista
+   
+   PYTHON (OPCIONAL):
+   • chat_demo.py - Versão básica
+   • chat_demo_pro.py - Versão avançada
+   
+   GUIAS:
+   • GUIA_APRESENTACAO.txt - Roteiro de apresentação
+   • README.md - Documentação completa
+
+---
+
+💡 DICA PARA APRESENTAÇÃO:
+   
+   Use chat_apresentacao.html para demonstrar como
+   funciona um LLM por dentro! É mais didático e não
+   precisa de configuração nenhuma.
+   
+💡 DICA PARA USO REAL:
+   
+   Use chat.html com sua API Key para conversar de
+   verdade com o ChatGPT!
+
+=========================================

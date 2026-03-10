@@ -1,0 +1,155 @@
+✨ NOVIDADES DA ÚLTIMA ATUALIZAÇÃO
+=====================================
+
+🎉 O chat_apresentacao.html foi TURBINADO!
+
+---
+
+🆕 NOVAS FUNCIONALIDADES:
+
+1. ✍️ **DIGITE QUALQUER PERGUNTA**
+   - Agora você não está limitado às 5 perguntas pré-programadas
+   - Campo de texto customizado no topo
+   - Pressione Enter ou clique em "Enviar"
+   - Ideal para interação com a audiência!
+
+2. 🧮 **CÁLCULOS MATEMÁTICOS REAIS**
+   A simulação agora mostra os cálculos REAIS que LLMs fazem:
+   
+   📊 Embeddings (Etapa 2.5):
+   - Vetores de 4 dimensões (simula os 12.288D do GPT)
+   - Exemplo: [0.742, 0.389, -0.156, 0.903]
+   - Palavras similares = vetores próximos
+   
+   🔗 Mecanismo de Atenção (Etapa 3.5):
+   - Matriz 3x3 mostrando relações entre tokens
+   - Query · Key^T / √d (fórmula dos Transformers)
+   - Visualização com cores: forte (azul), média (roxo), fraca (cinza)
+   
+   📈 Softmax & Probabilidades (Etapa 4.5):
+   - Distribuição de probabilidades para o próximo token
+   - e^(logit/T) / Σe^(logit/T)
+   - Mostra top 5 candidatos com probabilidade de cada um
+   - Temperature controla aleatoriedade
+
+3. 🌑 **TEMA DARK PROFISSIONAL**
+   - Melhor visibilidade em projetor
+   - Cores suaves para os olhos
+   - Contraste adequado para leitura
+
+4. 📊 **RESUMO APRIMORADO**
+   - Contagem detalhada de operações
+   - Fórmula: tokens × 175.000 = bilhões de operações
+   - Estimativa de custo por requisição
+   - Tempo de processamento simulado
+
+---
+
+🎯 COMO USAR:
+
+1. **Para Perguntas Pré-Programadas:**
+   - Clique nos 5 botões laranja
+   - Respostas completas e detalhadas
+
+2. **Para Perguntas Customizadas:**
+   - Digite no campo "Ou digite sua pergunta:"
+   - Pressione Enter ou clique em "Enviar"
+   - Mostra o processamento genérico
+   - Resposta educativa explicando que é simulação
+
+3. **Durante a Apresentação:**
+   - Comece com perguntas pré-programadas
+   - Destaque os cálculos matemáticos
+   - Depois permita perguntas da audiência
+   - Use "Limpar Chat" para recomeçar
+
+---
+
+📚 PONTOS TÉCNICOS PARA DESTACAR:
+
+1. **Embeddings:**
+   "Cada palavra vira um vetor de 12.288 números!
+    Palavras com significados similares têm vetores próximos.
+    É como mapear linguagem em espaço matemático."
+
+2. **Atenção:**
+   "Esta é a MÁGICA dos Transformers!
+    Cada token 'presta atenção' nos outros.
+    Query·Key^T calcula relevância matemática.
+    Revolucionou a IA em 2017!"
+
+3. **Softmax:**
+   "O modelo NÃO sabe a resposta certa.
+    Ele calcula PROBABILIDADE para cada palavra possível.
+    Temperature controla criatividade vs determinismo.
+    É por isso que respostas podem variar!"
+
+4. **Operações:**
+   "175 bilhões de parâmetros.
+    Cada token = ~175 mil multiplicações de matrizes.
+    Uma frase simples = bilhões de operações!
+    Por isso GPUs são essenciais."
+
+---
+
+⚡ EXEMPLOS DE PERGUNTAS PARA TESTAR:
+
+Pre-Programadas (têm respostas completas):
+✅ "O que são tokens em IA?"
+✅ "Como os LLMs processam texto?"
+✅ "O que é attention mechanism?"
+✅ "Qual a diferença entre GPT-3 e GPT-4?"
+✅ "Como funcionam os transformers?"
+
+Customizadas (mostram processamento genérico):
+✅ "Como funciona o universo?"
+✅ "Qual o sentido da vida?"
+✅ "Por que o céu é azul?"
+✅ "Como fazer bolo de chocolate?"
+✅ Qualquer coisa que sua audiência perguntar!
+
+---
+
+🎬 SUGESTÃO DE FLUXO DE APRESENTAÇÃO:
+
+1. Abra o arquivo (5 seg)
+2. Mostre o layout split-screen (30 seg)
+3. Clique em "O que são tokens?" (2 min)
+   → Pause em cada etapa
+   → Destaque embeddings, atenção, softmax
+4. Clique em "Como os LLMs processam texto?" (2 min)
+   → Foque nos números e operações
+5. Pergunte à audiência (3 min)
+   → "Alguém quer fazer uma pergunta?"
+   → Digite no campo customizado
+   → Mostre que mesmo sem resposta, mostra processamento
+6. Discussão e Q&A (resto do tempo)
+
+---
+
+📁 ARQUIVOS ATUALIZADOS:
+
+✅ chat_apresentacao.html - Arquivo principal atualizado
+✅ GUIA_APRESENTACAO.txt - Roteiro expandido com novas funções
+✅ README.md - Documentação atualizada
+✅ INICIO_RAPIDO.txt - Guia rápido atualizado
+✅ NOVIDADES_ATUALIZACAO.txt - Este arquivo!
+
+---
+
+💡 DICA FINAL:
+
+Pratique antes! Abra o arquivo e clique nas perguntas
+para se familiarizar com:
+- Tempo de cada animação
+- Ordem das etapas
+- Onde pausar para explicar
+- Como responder perguntas customizadas
+
+Lembre-se: O objetivo não é impressionar, é EDUCAR.
+Foque em explicar os conceitos matemáticos!
+
+---
+
+🎓 BOA APRESENTAÇÃO!
+

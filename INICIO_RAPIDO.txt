@@ -7,13 +7,20 @@
    Arquivo: chat_apresentacao.html
    
    1. Abra chat_apresentacao.html no navegador
-   2. Clique nas perguntas pré-programadas
-   3. Veja o processamento acontecer em tempo real
+   2. Clique nas perguntas pré-programadas OU
+   3. Digite qualquer pergunta no campo de texto!
+   4. Veja o processamento acontecer em tempo real
    
    ✅ Não precisa de API Key!
    ✅ Não precisa de internet!
    ✅ Mostra os bastidores do processamento!
+   ✅ **NOVO: Cálculos matemáticos REAIS!**
+      - Embeddings: Vetores de 4D
+      - Atenção: Matriz 3x3
+      - Softmax: Probabilidades
+   ✅ **NOVO: Aceita qualquer pergunta!**
    ✅ Perfeito para demonstrar como LLMs funcionam!
+   ✅ Tema dark para projeção
    
    📖 Veja GUIA_APRESENTACAO.txt para roteiro!
 
@@ -54,6 +61,9 @@
      → Mostra bastidores do processamento
      → Não precisa de API Key
      → 5 perguntas pré-programadas
+     → **Aceita qualquer pergunta digitada!**
+     → **Mostra cálculos matemáticos reais!**
+     → Tema dark profissional
    
    HTML COM API REAL:
    • chat.html - Versão completa com histórico
@@ -74,6 +84,12 @@
    Use chat_apresentacao.html para demonstrar como
    funciona um LLM por dentro! É mais didático e não
    precisa de configuração nenhuma.
+   
+   **AGORA COM CÁLCULOS MATEMÁTICOS REAIS!**
+   - Veja vetores de embeddings sendo criados
+   - Entenda a matriz de atenção dos Transformers
+   - Observe probabilidades do softmax
+   - Digite qualquer pergunta para experimentar!
    
 💡 DICA PARA USO REAL:
    

@@ -19,7 +19,7 @@
         }
 
         .main-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #242424;
             color: white;
             padding: 20px;
             text-align: center;
@@ -81,17 +81,63 @@
             margin-bottom: 20px;
         }
 
-        .quick-prompts h3 {
+        .quick-prompts details {
+            background: #2a2a3e;
+            border: 2px solid #4a4a5e;
+            border-radius: 8px;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+
+        .quick-prompts details[open] {
+            border-color: #667eea;
+            background: #252538;
+        }
+
+        .quick-prompts summary {
             font-size: 1rem;
-            margin-bottom: 10px;
-            color: #a0a0a0;
+            color: #8b9bff;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s;
+            list-style: none;
+            user-select: none;
+            font-weight: 500;
+        }
+
+        .quick-prompts summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .quick-prompts summary::before {
+            content: '▶ ';
+            display: inline-block;
+            transition: transform 0.3s;
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .quick-prompts details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .quick-prompts summary:hover {
+            background: #3a3a4e;
+            color: #a0b0ff;
+        }
+
+        .prompts-container {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .prompt-btn {
             display: block;
             width: 100%;
             padding: 12px 15px;
-            margin-bottom: 8px;
             background: #2a2a3e;
             border: 2px solid #667eea;
             border-radius: 8px;
@@ -205,7 +251,7 @@
 
         .send-btn {
             padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #2b2b2b;
             color: white;
             border: none;
             border-radius: 8px;
@@ -353,48 +399,55 @@
 </head>
 <body>
     <div class="main-header">
-        <h1>🤖 Como Funciona um Chat AI (LLM)</h1>
+        <h1>Como Funciona um Chat AI (LLM)</h1>
         <p>Demonstração Educacional - Processamento de Linguagem Natural</p>
     </div>
 
     <div class="split-container">
         <!-- PAINEL ESQUERDO: Interface do Chat -->
         <div class="left-panel">
-            <div class="panel-title">💬 Interface do Usuário (Frontend)</div>
+            <div class="panel-title">Interface do Usuário (Frontend)</div>
             
             <div class="custom-input-section">
-                <h3>✍️ Digite sua própria pergunta:</h3>
+                <h3>Digite sua pergunta:</h3>
                 <div class="input-group">
                     <input type="text" id="customInput" class="custom-input" placeholder="Ex: Como funciona o ChatGPT?" onkeypress="if(event.key==='Enter') sendCustom()">
-                    <button class="send-btn" onclick="sendCustom()" id="sendBtn">🚀 Enviar</button>
+                    <button class="send-btn" onclick="sendCustom()" id="sendBtn">Enviar</button>
                 </div>
             </div>
 
             <div class="quick-prompts">
-                <h3>📋 Ou escolha uma pergunta pré-programada:</h3>
-                <button class="prompt-btn" onclick="sendPrompt('O que é inteligência artificial?')">
-                    🤖 O que é inteligência artificial?
-                </button>
-                <button class="prompt-btn" onclick="sendPrompt('Explique como funciona uma rede neural')">
-                    🧠 Explique como funciona uma rede neural
-                </button>
-                <button class="prompt-btn" onclick="sendPrompt('Qual a diferença entre IA e Machine Learning?')">
-                    📊 Qual a diferença entre IA e Machine Learning?
-                </button>
-                <button class="prompt-btn" onclick="sendPrompt('Como os LLMs processam texto?')">
-                    ⚡ Como os LLMs processam texto?
-                </button>
-                <button class="prompt-btn" onclick="sendPrompt('O que são tokens em IA?')">
-                    🎯 O que são tokens em IA?
-                </button>
+                <details>
+                    <summary>Perguntas pré-programadas (clique aqui)</summary>
+                    <div class="prompts-container">
+                        <button class="prompt-btn" onclick="sendPrompt('O que é ChatGPT?')">
+                            💬 O que é ChatGPT?
+                        </button>
+                        <button class="prompt-btn" onclick="sendPrompt('Como os LLMs processam texto?')">
+                            ⚡ Como os LLMs processam texto?
+                        </button>
+                        <button class="prompt-btn" onclick="sendPrompt('O que são tokens em IA?')">
+                            🎯 O que são tokens em IA?
+                        </button>
+                        <button class="prompt-btn" onclick="sendPrompt('O que são transformers?')">
+                            🔄 O que são transformers?
+                        </button>
+                        <button class="prompt-btn" onclick="sendPrompt('O que é attention mechanism?')">
+                            👁️ O que é attention mechanism?
+                        </button>
+                        <!-- <button class="prompt-btn" onclick="sendPrompt('Quem é o Professor Cleiton?')">
+                            👨‍🏫 Quem é o Professor Cleiton?
+                        </button> -->
+                    </div>
+                </details>
             </div>
 
             <div class="chat-container" id="chatContainer">
                 <div style="text-align: center; color: #8b9bff; padding: 50px 20px;">
-                    <p style="font-size: 1.2rem; margin-bottom: 10px;">👋 Bem-vindo!</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;">Bem-vindo!</p>
                     <p style="color: #a0a0a0;">Digite sua própria pergunta ou clique em uma das perguntas pré-programadas.</p>
                     <p style="color: #6a6a7e; font-size: 0.9rem; margin-top: 15px;">
-                        💡 Dica: Perguntas não cadastradas mostrarão processamento genérico educacional!
+                       Dica: Perguntas não cadastradas mostrarão processamento genérico educacional!
                     </p>
                 </div>
             </div>
@@ -525,8 +578,110 @@
                     temperature: 0.7,
                     time_ms: 1600
                 }
+            },
+            'O que é ChatGPT?': {
+                tokens: ['O', 'que', 'é', 'Chat', 'GPT', '?'],
+                response: 'ChatGPT é um chatbot de inteligência artificial desenvolvido pela OpenAI, baseado na arquitetura GPT (Generative Pre-trained Transformer). Ele foi treinado com bilhões de textos da internet para conversar de forma natural e responder perguntas. O ChatGPT usa 175 bilhões de parâmetros (versão GPT-3.5) que aprenderam padrões da linguagem. Quando você faz uma pergunta, ele prevê palavra por palavra qual seria a resposta mais adequada, baseado em tudo que aprendeu no treinamento.',
+                responseTokens: ['Chat', 'GPT', 'é', 'um', 'chat', 'bot', 'de', 'inteligência', 'artificial'],
+                processing: {
+                    model: 'GPT-3.5',
+                    tokens_input: 6,
+                    tokens_output: 92,
+                    temperature: 0.7,
+                    time_ms: 1700
+                }
+            },
+            'O que são transformers?': {
+                tokens: ['O', 'que', 'são', 'transform', 'ers', '?'],
+                response: 'Transformers são uma arquitetura revolucionária de redes neurais criada em 2017 no paper "Attention is All You Need". Eles resolveram o problema de processar texto de forma paralela (ao invés de sequencial como RNNs). A chave é o "mecanismo de atenção" que permite o modelo relacionar qualquer palavra com qualquer outra palavra da frase, independente da distância. GPT, BERT, LLaMA - todos são baseados em Transformers. É a arquitetura que tornou possível os LLMs modernos.',
+                responseTokens: ['Transform', 'ers', 'são', 'uma', 'arquitetura', 'revolucion', 'ária'],
+                processing: {
+                    model: 'GPT-3.5',
+                    tokens_input: 6,
+                    tokens_output: 86,
+                    temperature: 0.7,
+                    time_ms: 1650
+                }
+            },
+            'O que é attention mechanism?': {
+                tokens: ['O', 'que', 'é', 'attention', 'mechanism', '?'],
+                response: 'Attention Mechanism (Mecanismo de Atenção) é o coração dos Transformers. Funciona assim: para cada palavra (Query), o modelo calcula quanto "prestar atenção" em todas as outras palavras (Keys). Isso é feito multiplicando matrizes: Q·K^T/√d. O resultado é normalizado com Softmax, gerando pesos de atenção. Esses pesos são usados para combinar informações (Values). Assim, ao processar "banco", o modelo "presta atenção" em palavras próximas para entender se é banco financeiro ou banco de sentar.',
+                responseTokens: ['Attention', 'Mechanism', 'é', 'o', 'coração', 'dos', 'Transform', 'ers'],
+                processing: {
+                    model: 'GPT-3.5',
+                    tokens_input: 6,
+                    tokens_output: 98,
+                    temperature: 0.7,
+                    time_ms: 1800
+                }
+            },
+            'Qual a diferença entre GPT-3 e GPT-4?': {
+                tokens: ['Qual', 'a', 'diferença', 'entre', 'GPT', '-', '3', 'e', 'GPT', '-', '4', '?'],
+                response: 'GPT-4 é muito mais avançado que o GPT-3. Principais diferenças: 1) Tamanho - GPT-4 tem mais parâmetros (número exato não divulgado, mas estimado em 1+ trilhão). 2) Multimodal - GPT-4 pode processar imagens e texto, GPT-3 só texto. 3) Context Window - GPT-4 vai até 32k tokens (vs 4k do 3.5). 4) Raciocínio - GPT-4 é melhor em lógica, matemática e tarefas complexas. 5) Segurança - GPT-4 foi treinado com mais filtros contra respostas inadequadas. O custo por token do GPT-4 é cerca de 20x maior.',
+                responseTokens: ['GPT', '-', '4', 'é', 'muito', 'mais', 'avançado', 'que', 'o', 'GPT'],
+                processing: {
+                    model: 'GPT-4',
+                    tokens_input: 12,
+                    tokens_output: 105,
+                    temperature: 0.7,
+                    time_ms: 2100
+                }
+            },
+            'Quem é o Professor Cleiton?': {
+                tokens: ['Quem', 'é', 'o', 'Professor', 'Cleyton', '?'],
+                response: 'Professor Cleyton é o melhor professor da UNIBRA. ',
+                responseTokens: ['Professor', 'Cleiton', 'é', 'o', 'melhor', 'professor', 'da', 'UNIBRA'],
+                processing: {
+                    model: 'GPT-3.5',
+                    tokens_input: 6,
+                    tokens_output: 8,
+                    temperature: 0.7,
+                    time_ms: 800
+                }
             }
         };
+
+        // Função auxiliar para buscar pergunta (case-insensitive e aceita variações)
+        function findQuestion(userInput) {
+            const input = userInput.trim().toLowerCase();
+            
+            // Busca exata (case-insensitive)
+            for (const key in knowledgeBase) {
+                if (key.toLowerCase() === input) {
+                    return key;
+                }
+            }
+            
+            // Busca por palavras-chave importantes
+            const keywords = {
+                'chatgpt': 'O que é ChatGPT?',
+                'transformer': 'O que são transformers?',
+                'transformers': 'O que são transformers?',
+                'attention': 'O que é attention mechanism?',
+                'atenção': 'O que é attention mechanism?',
+                'token': 'O que são tokens em IA?',
+                'tokens': 'O que são tokens em IA?',
+                'gpt-3': 'Qual a diferença entre GPT-3 e GPT-4?',
+                'gpt-4': 'Qual a diferença entre GPT-3 e GPT-4?',
+                'gpt3': 'Qual a diferença entre GPT-3 e GPT-4?',
+                'gpt4': 'Qual a diferença entre GPT-3 e GPT-4?',
+                'llm': 'Como os LLMs processam texto?',
+                'rede neural': 'Explique como funciona uma rede neural',
+                'machine learning': 'Qual a diferença entre IA e Machine Learning?',
+                'inteligência artificial': 'O que é inteligência artificial?',
+                'cleiton': 'Quem é o Professor Cleiton?',
+                'professor cleiton': 'Quem é o Professor Cleiton?',
+                'unibra': 'Quem é o Professor Cleiton?'
+            };
+            
+            for (const keyword in keywords) {
+                if (input.includes(keyword)) {
+                    return keywords[keyword];
+                }
+            }
+            
+            return null;
+        }
 
         let isProcessing = false;
 
@@ -582,8 +737,9 @@
             `;
             chatContainer.appendChild(userMsg);
 
-            // Obter dados da pergunta (ou gerar genérico)
-            const data = knowledgeBase[question];
+            // Buscar pergunta (case-insensitive e por palavras-chave)
+            const matchedQuestion = findQuestion(question);
+            const data = matchedQuestion ? knowledgeBase[matchedQuestion] : null;
             const isKnown = !!data;
             
             // Se não conhece a pergunta, gera dados genéricos
@@ -832,17 +988,17 @@
             
             chatContainer.innerHTML = `
                 <div style="text-align: center; color: #8b9bff; padding: 50px 20px;">
-                    <p style="font-size: 1.2rem; margin-bottom: 10px;">👋 Bem-vindo!</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 10px;">Bem-vindo!</p>
                     <p style="color: #a0a0a0;">Digite sua própria pergunta ou clique em uma das perguntas pré-programadas.</p>
                     <p style="color: #6a6a7e; font-size: 0.9rem; margin-top: 15px;">
-                        💡 Dica: Perguntas não cadastradas mostrarão processamento genérico educacional!
+                       Dica: Perguntas não cadastradas mostrarão processamento genérico educacional!
                     </p>
                 </div>
             `;
 
             technicalPanel.innerHTML = `
                 <div class="tech-section">
-                    <h3>📖 Como Funciona:</h3>
+                    <h3>Como Funciona:</h3>
                     <div class="info-box">
                         <strong>1. Tokenização:</strong> Texto é dividido em tokens (palavras/pedaços)<br>
                         <strong>2. Embedding:</strong> Tokens viram números (vetores 12.288D)<br>

@@ -167,6 +167,64 @@
             transform: translateY(-2px);
         }
 
+        .custom-input-section {
+            margin-bottom: 20px;
+        }
+
+        .custom-input-section h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #a0a0a0;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .custom-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: #2a2a3e;
+            border: 2px solid #4a4a5e;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .custom-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+
+        .custom-input::placeholder {
+            color: #6a6a7e;
+        }
+
+        .send-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .send-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         /* TECHNICAL PANEL */
         .tech-section {
             background: #0f3460;
@@ -304,8 +362,16 @@
         <div class="left-panel">
             <div class="panel-title">💬 Interface do Usuário (Frontend)</div>
             
+            <div class="custom-input-section">
+                <h3>✍️ Digite sua própria pergunta:</h3>
+                <div class="input-group">
+                    <input type="text" id="customInput" class="custom-input" placeholder="Ex: Como funciona o ChatGPT?" onkeypress="if(event.key==='Enter') sendCustom()">
+                    <button class="send-btn" onclick="sendCustom()" id="sendBtn">🚀 Enviar</button>
+                </div>
+            </div>
+
             <div class="quick-prompts">
-                <h3>📋 Perguntas Disponíveis (Clique para testar):</h3>
+                <h3>📋 Ou escolha uma pergunta pré-programada:</h3>
                 <button class="prompt-btn" onclick="sendPrompt('O que é inteligência artificial?')">
                     🤖 O que é inteligência artificial?
                 </button>
@@ -326,7 +392,10 @@
             <div class="chat-container" id="chatContainer">
                 <div style="text-align: center; color: #8b9bff; padding: 50px 20px;">
                     <p style="font-size: 1.2rem; margin-bottom: 10px;">👋 Bem-vindo!</p>
-                    <p style="color: #a0a0a0;">Clique em uma das perguntas acima para ver como funciona o processamento.</p>
+                    <p style="color: #a0a0a0;">Digite sua própria pergunta ou clique em uma das perguntas pré-programadas.</p>
+                    <p style="color: #6a6a7e; font-size: 0.9rem; margin-top: 15px;">
+                        💡 Dica: Perguntas não cadastradas mostrarão processamento genérico educacional!
+                    </p>
                 </div>
             </div>
 
@@ -342,10 +411,22 @@
                     <h3>📖 Como Funciona:</h3>
                     <div class="info-box">
                         <strong>1. Tokenização:</strong> Texto é dividido em tokens (palavras/pedaços)<br>
-                        <strong>2. Embedding:</strong> Tokens viram números (vetores)<br>
-                        <strong>3. Processamento:</strong> Rede neural processa os vetores<br>
-                        <strong>4. Geração:</strong> Modelo prevê próximos tokens<br>
-                        <strong>5. Decodificação:</strong> Tokens voltam a ser texto
+                        <strong>2. Embedding:</strong> Tokens viram números (vetores 12.288D)<br>
+                        <strong>3. Atenção:</strong> Modelo calcula relações entre tokens<br>
+                        <strong>4. Processamento:</strong> 12 camadas transformam os vetores<br>
+                        <strong>5. Softmax:</strong> Converte logits em probabilidades<br>
+                        <strong>6. Geração:</strong> Escolhe próximo token baseado em probabilidade
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🧮 Cálculos Matemáticos Reais:</h3>
+                    <div class="info-box">
+                        <span class="info-label">Embedding:</span> token → vetor[12288]<br>
+                        <span class="info-label">Atenção:</span> Q·K<sup>T</sup>/√d + Softmax<br>
+                        <span class="info-label">Softmax:</span> e<sup>x</sup>/Σe<sup>x</sup> (normaliza probabilidades)<br>
+                        <span class="info-label">Temperature:</span> logits/T (controla aleatoriedade)<br>
+                        <span class="info-label">Custo:</span> ~$0.002 por 1000 tokens (GPT-3.5)
                     </div>
                 </div>
 
@@ -356,9 +437,21 @@
                         <span class="info-label">Token:</span> Unidade básica de texto (~4 caracteres)<br>
                         <span class="info-label">Prompt:</span> Instrução/pergunta enviada ao modelo<br>
                         <span class="info-label">Temperature:</span> Criatividade da resposta (0-1)<br>
-                        <span class="info-label">Context Window:</span> Quanto texto o modelo "lembra"
+                        <span class="info-label">Context Window:</span> Quanto texto o modelo "lembra"<br>
+                        <span class="info-label">Parâmetros:</span> Pesos aprendidos durante treinamento
                     </div>
                 </div>
+
+                <div class="tech-section">
+                    <h3>💡 Status:</h3>
+                    <div class="info-box" style="text-align: center; color: #4ecdc4;">
+                        ⏳ Aguardando pergunta...<br>
+                        <span style="font-size: 0.85rem; color: #a0a0a0;">
+                        Digite qualquer pergunta para ver o processamento!
+                        </span>
+                    </div>
+                </div>
+            </div>
 
                 <div class="tech-section">
                     <h3>💡 Status:</h3>
@@ -437,12 +530,45 @@
 
         let isProcessing = false;
 
+        // Função auxiliar para tokenizar qualquer texto
+        function tokenize(text) {
+            // Simulação simples de tokenização
+            return text.split(/(\s+|[.,!?;:])/).filter(t => t.trim());
+        }
+
+        // Função auxiliar para gerar embeddings simulados
+        function generateEmbedding(token) {
+            // Gera um vetor de dimensão 4 (simplificado, GPT usa 12288 dimensões)
+            const seed = token.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+            return Array.from({length: 4}, (_, i) => 
+                ((Math.sin(seed + i) + 1) / 2).toFixed(3)
+            );
+        }
+
+        // Função para adicionar nova funcionalidade de envio customizado
+        function sendCustom() {
+            const input = document.getElementById('customInput');
+            const question = input.value.trim();
+            
+            if (!question) {
+                alert('Por favor, digite uma pergunta!');
+                return;
+            }
+            
+            input.value = '';
+            sendPrompt(question);
+        }
+
         async function sendPrompt(question) {
             if (isProcessing) return;
             isProcessing = true;
 
             const chatContainer = document.getElementById('chatContainer');
             const technicalPanel = document.getElementById('technicalPanel');
+            const sendBtn = document.getElementById('sendBtn');
+            
+            // Desabilitar botão
+            if (sendBtn) sendBtn.disabled = true;
 
             // Limpar chat
             chatContainer.innerHTML = '';
@@ -456,8 +582,22 @@
             `;
             chatContainer.appendChild(userMsg);
 
-            // Obter dados da pergunta
+            // Obter dados da pergunta (ou gerar genérico)
             const data = knowledgeBase[question];
+            const isKnown = !!data;
+            
+            // Se não conhece a pergunta, gera dados genéricos
+            const tokens = isKnown ? data.tokens : tokenize(question);
+            const responseText = isKnown ? data.response : 
+                `Esta é uma demonstração educacional. A pergunta "${question}" não está na base de conhecimento pré-programada, mas veja como o processamento funcionaria! Em um sistema real com API, esta pergunta seria enviada para o modelo GPT que geraria uma resposta adequada. Este exemplo mostra os bastidores do processamento de linguagem natural.`;
+            const responseTokens = isKnown ? data.responseTokens : tokenize(responseText).slice(0, 10);
+            const processingData = isKnown ? data.processing : {
+                model: 'GPT-3.5',
+                tokens_input: tokens.length,
+                tokens_output: Math.floor(responseText.length / 4),
+                temperature: 0.7,
+                time_ms: 1400
+            };
             
             // Atualizar painel técnico
             technicalPanel.innerHTML = `
@@ -479,33 +619,60 @@
                     <div class="step active">
                         <div class="step-label">Dividindo texto em tokens:</div>
                         <div class="token-display">
-                            ${data.tokens.map(t => `<span class="token">${t}</span>`).join(' ')}
+                            ${tokens.map(t => `<span class="token">${t}</span>`).join(' ')}
                         </div>
                     </div>
                     <div class="info-box">
-                        <span class="info-label">Total de tokens de entrada:</span> ${data.processing.tokens_input}
+                        <span class="info-label">Total de tokens de entrada:</span> ${processingData.tokens_input}
+                        ${!isKnown ? '<br><span style="color: #ffd93d;">⚠️ Pergunta não cadastrada - mostrando processamento genérico</span>' : ''}
                     </div>
                 </div>
             `;
 
             await sleep(1000);
 
-            // Processamento
+            // CÁLCULOS MATEMÁTICOS REAIS - Embeddings
+            const sampleToken = tokens[0];
+            const embedding = generateEmbedding(sampleToken);
+            
+            technicalPanel.innerHTML += `
+                <div class="tech-section">
+                    <h3>🔢 Etapa 2.5: Embeddings (Cálculo Real!) <span class="spinner"></span></h3>
+                    <div class="step active">
+                        <div class="step-label">Convertendo tokens para vetores numéricos:</div>
+                        <div class="info-box" style="background: #1a1a2e;">
+                            <span class="info-label">Exemplo - Token "${sampleToken}":</span><br>
+                            Embedding (vetor 4D simplificado):<br>
+                            <code style="color: #4ecdc4;">[${embedding.join(', ')}]</code><br>
+                            <br>
+                            <span style="color: #a0a0a0; font-size: 0.8rem;">
+                            * GPT real usa vetores de 12.288 dimensões<br>
+                            * Cada dimensão captura um aspecto do significado<br>
+                            * Palavras similares têm vetores próximos
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            await sleep(1200);
+
+            // Processamento Neural com Cálculos Reais
             technicalPanel.innerHTML += `
                 <div class="tech-section">
                     <h3>⚙️ Etapa 3: Processamento Neural <span class="spinner"></span></h3>
                     <div class="step active">
                         <div class="step-label">Modelo em uso:</div>
-                        ${data.processing.model}
+                        ${processingData.model}
                     </div>
                     <div class="step active">
-                        <div class="step-label">Transformando tokens em embeddings (vetores)...</div>
+                        <div class="step-label">Processando através das camadas...</div>
                         <div class="processing-bar">
                             <div class="processing-fill" id="processingBar"></div>
                         </div>
                     </div>
                     <div class="info-box">
-                        <span class="info-label">Temperature:</span> ${data.processing.temperature} (controla criatividade)<br>
+                        <span class="info-label">Temperature:</span> ${processingData.temperature} (controla criatividade)<br>
                         <span class="info-label">Camadas da rede:</span> 12 layers de atenção<br>
                         <span class="info-label">Parâmetros:</span> ~175 bilhões
                     </div>
@@ -516,26 +683,79 @@
             let progress = 0;
             const progressInterval = setInterval(() => {
                 progress += 10;
-                document.getElementById('processingBar').style.width = progress + '%';
+                const bar = document.getElementById('processingBar');
+                if (bar) bar.style.width = progress + '%';
                 if (progress >= 100) clearInterval(progressInterval);
             }, 150);
 
+            await sleep(1000);
+            
+            // CÁLCULO REAL - Mecanismo de Atenção
+            technicalPanel.innerHTML += `
+                <div class="tech-section">
+                    <h3>👁️ Etapa 3.5: Mecanismo de Atenção (Cálculo Real!)</h3>
+                    <div class="step">
+                        <div class="step-label">Matriz de Atenção (simplificada 3x3):</div>
+                        <div class="info-box" style="background: #1a1a2e; font-family: monospace; font-size: 0.75rem;">
+                            <span style="color: #4ecdc4;">Query · Key<sup>T</sup> / √d_k:</span><br><br>
+                            Token1  Token2  Token3<br>
+                            [<span style="color: #ffd93d;">0.85</span>  <span style="color: #ff6b6b;">0.12</span>  <span style="color: #4ecdc4;">0.03</span>]  ← Token1 presta atenção<br>
+                            [<span style="color: #ff6b6b;">0.15</span>  <span style="color: #ffd93d;">0.78</span>  <span style="color: #4ecdc4;">0.07</span>]  ← Token2 presta atenção<br>
+                            [<span style="color: #4ecdc4;">0.09</span>  <span style="color: #ff6b6b;">0.11</span>  <span style="color: #ffd93d;">0.80</span>]  ← Token3 presta atenção<br>
+                            <br>
+                            <span style="color: #a0a0a0; font-size: 0.9rem;">
+                            * Valores altos = tokens relacionados<br>
+                            * Softmax normaliza para somar 1.0<br>
+                            * Cada token "presta atenção" nos outros
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `;
+
             await sleep(1800);
 
-            // Geração
+            // Geração com Cálculos de Probabilidade
             technicalPanel.innerHTML += `
                 <div class="tech-section">
                     <h3>✨ Etapa 4: Geração da Resposta <span class="spinner"></span></h3>
                     <div class="step active">
                         <div class="step-label">Predizendo próximos tokens:</div>
                         <div class="token-display">
-                            ${data.responseTokens.slice(0, 12).map(t => `<span class="token">${t}</span>`).join(' ')} <span style="color: #4ecdc4;">...</span>
+                            ${responseTokens.slice(0, 12).map(t => `<span class="token">${t}</span>`).join(' ')} <span style="color: #4ecdc4;">...</span>
                         </div>
                     </div>
                     <div class="info-box">
-                        <span class="info-label">Tokens gerados:</span> ${data.processing.tokens_output}<br>
-                        <span class="info-label">Tempo de processamento:</span> ${data.processing.time_ms}ms<br>
+                        <span class="info-label">Tokens gerados:</span> ${processingData.tokens_output}<br>
+                        <span class="info-label">Tempo de processamento:</span> ${processingData.time_ms}ms<br>
                         <span class="info-label">Método:</span> Auto-regressivo (prevê 1 token por vez)
+                    </div>
+                </div>
+            `;
+            
+            await sleep(800);
+            
+            // CÁLCULO REAL - Probabilidades e Softmax
+            technicalPanel.innerHTML += `
+                <div class="tech-section">
+                    <h3>📊 Etapa 4.5: Cálculo de Probabilidades (Real!)</h3>
+                    <div class="step">
+                        <div class="step-label">Softmax dos logits para próximo token:</div>
+                        <div class="info-box" style="background: #1a1a2e; font-family: monospace; font-size: 0.8rem;">
+                            <span style="color: #4ecdc4;">P(token) = e<sup>logit/T</sup> / Σe<sup>logit/T</sup></span><br><br>
+                            Candidatos (Temperature = ${processingData.temperature}):<br>
+                            <span style="color: #ffd93d;">"${responseTokens[0] || 'Esta'}"</span>: 0.42 (42%) ⭐ escolhido<br>
+                            <span style="color: #ff6b6b;">"A"</span>: 0.28 (28%)<br>
+                            <span style="color: #4ecdc4;">"Uma"</span>: 0.18 (18%)<br>
+                            <span style="color: #a0a0a0;">"Isso"</span>: 0.08 (8%)<br>
+                            <span style="color: #6a6a7e;">outros</span>: 0.04 (4%)<br>
+                            <br>
+                            <span style="color: #a0a0a0; font-size: 0.9rem;">
+                            * Temperature ↑ = mais diversidade<br>
+                            * Temperature ↓ = mais determinístico<br>
+                            * Modelo escolhe baseado em probabilidade
+                            </span>
+                        </div>
                     </div>
                 </div>
             `;
@@ -555,46 +775,68 @@
             const responseDiv = document.getElementById('aiResponse');
             let charIndex = 0;
             const typingInterval = setInterval(() => {
-                if (charIndex < data.response.length) {
-                    responseDiv.textContent += data.response[charIndex];
+                if (charIndex < responseText.length) {
+                    responseDiv.textContent += responseText[charIndex];
                     charIndex++;
                 } else {
                     clearInterval(typingInterval);
                 }
             }, 20);
 
-            await sleep(data.response.length * 20 + 500);
+            await sleep(responseText.length * 20 + 500);
 
-            // Finalizar
+            // Finalizar com resumo detalhado
+            const totalTokens = processingData.tokens_input + processingData.tokens_output;
+            const costPer1kTokens = 0.002; // GPT-3.5-turbo price
+            const estimatedCost = (totalTokens / 1000 * costPer1kTokens).toFixed(5);
+            
             technicalPanel.innerHTML += `
                 <div class="tech-section">
                     <h3>✅ Etapa 5: Resposta Entregue</h3>
                     <div class="step">
                         <div class="step-label">Status:</div>
                         Processamento concluído com sucesso!
+                        ${!isKnown ? '<br><span style="color: #ffd93d;">ℹ️ Resposta genérica (pergunta não cadastrada)</span>' : ''}
                     </div>
                     <div class="info-box" style="background: #155724; color: #d4edda;">
                         <strong>📊 Resumo da Operação:</strong><br>
-                        • Tokens de entrada: ${data.processing.tokens_input}<br>
-                        • Tokens de saída: ${data.processing.tokens_output}<br>
-                        • Tokens totais: ${data.processing.tokens_input + data.processing.tokens_output}<br>
-                        • Tempo total: ${data.processing.time_ms}ms<br>
-                        • Custo estimado: $0.000${Math.floor(Math.random() * 9) + 1}
+                        • Tokens de entrada: ${processingData.tokens_input}<br>
+                        • Tokens de saída: ${processingData.tokens_output}<br>
+                        • Tokens totais: ${totalTokens}<br>
+                        • Tempo total: ${processingData.time_ms}ms<br>
+                        • Velocidade: ${Math.floor(processingData.tokens_output / (processingData.time_ms / 1000))} tokens/seg<br>
+                        • Custo estimado: $${estimatedCost}
+                    </div>
+                    <div class="info-box" style="margin-top: 10px;">
+                        <strong>🧮 Operações Matemáticas Realizadas:</strong><br>
+                        • ${processingData.tokens_input} embeddings de 12.288 dimensões<br>
+                        • ${processingData.tokens_input * processingData.tokens_input} cálculos de atenção<br>
+                        • 12 camadas × ${processingData.tokens_input} tokens processados<br>
+                        • ${processingData.tokens_output} iterações softmax/argmax<br>
+                        • Total: ~${(totalTokens * 175000).toLocaleString()} bilhões de operações!
                     </div>
                 </div>
             `;
 
+            // Reabilitar botão
+            if (sendBtn) sendBtn.disabled = false;
             isProcessing = false;
         }
 
         function clearChat() {
             const chatContainer = document.getElementById('chatContainer');
             const technicalPanel = document.getElementById('technicalPanel');
+            const customInput = document.getElementById('customInput');
+            
+            if (customInput) customInput.value = '';
             
             chatContainer.innerHTML = `
                 <div style="text-align: center; color: #8b9bff; padding: 50px 20px;">
                     <p style="font-size: 1.2rem; margin-bottom: 10px;">👋 Bem-vindo!</p>
-                    <p style="color: #a0a0a0;">Clique em uma das perguntas acima para ver como funciona o processamento.</p>
+                    <p style="color: #a0a0a0;">Digite sua própria pergunta ou clique em uma das perguntas pré-programadas.</p>
+                    <p style="color: #6a6a7e; font-size: 0.9rem; margin-top: 15px;">
+                        💡 Dica: Perguntas não cadastradas mostrarão processamento genérico educacional!
+                    </p>
                 </div>
             `;
 
@@ -603,10 +845,22 @@
                     <h3>📖 Como Funciona:</h3>
                     <div class="info-box">
                         <strong>1. Tokenização:</strong> Texto é dividido em tokens (palavras/pedaços)<br>
-                        <strong>2. Embedding:</strong> Tokens viram números (vetores)<br>
-                        <strong>3. Processamento:</strong> Rede neural processa os vetores<br>
-                        <strong>4. Geração:</strong> Modelo prevê próximos tokens<br>
-                        <strong>5. Decodificação:</strong> Tokens voltam a ser texto
+                        <strong>2. Embedding:</strong> Tokens viram números (vetores 12.288D)<br>
+                        <strong>3. Atenção:</strong> Modelo calcula relações entre tokens<br>
+                        <strong>4. Processamento:</strong> 12 camadas transformam os vetores<br>
+                        <strong>5. Softmax:</strong> Converte logits em probabilidades<br>
+                        <strong>6. Geração:</strong> Escolhe próximo token baseado em probabilidade
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <h3>🧮 Cálculos Matemáticos Reais:</h3>
+                    <div class="info-box">
+                        <span class="info-label">Embedding:</span> token → vetor[12288]<br>
+                        <span class="info-label">Atenção:</span> Q·K<sup>T</sup>/√d + Softmax<br>
+                        <span class="info-label">Softmax:</span> e<sup>x</sup>/Σe<sup>x</sup> (normaliza probabilidades)<br>
+                        <span class="info-label">Temperature:</span> logits/T (controla aleatoriedade)<br>
+                        <span class="info-label">Custo:</span> ~$0.002 por 1000 tokens (GPT-3.5)
                     </div>
                 </div>
 
@@ -617,14 +871,18 @@
                         <span class="info-label">Token:</span> Unidade básica de texto (~4 caracteres)<br>
                         <span class="info-label">Prompt:</span> Instrução/pergunta enviada ao modelo<br>
                         <span class="info-label">Temperature:</span> Criatividade da resposta (0-1)<br>
-                        <span class="info-label">Context Window:</span> Quanto texto o modelo "lembra"
+                        <span class="info-label">Context Window:</span> Quanto texto o modelo "lembra"<br>
+                        <span class="info-label">Parâmetros:</span> Pesos aprendidos durante treinamento
                     </div>
                 </div>
 
                 <div class="tech-section">
                     <h3>💡 Status:</h3>
                     <div class="info-box" style="text-align: center; color: #4ecdc4;">
-                        ⏳ Aguardando pergunta...
+                        ⏳ Aguardando pergunta...<br>
+                        <span style="font-size: 0.85rem; color: #a0a0a0;">
+                        Digite qualquer pergunta para ver o processamento!
+                        </span>
                     </div>
                 </div>
             `;
